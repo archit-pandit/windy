@@ -14,7 +14,7 @@ SET assembly=testbed
 SET compilerFlags=-g 
 SET includeFlags=-Isrc -I../engine/src/
 SET linkerFlags=-L../bin/ -lengine.lib
-SET defines=-D_DEBUG -DKIMPORT
+SET defines=-D_DEBUG -DWIMPORT
 
 ECHO "Building %assembly%%..."
 clang %cFilenames% %compilerFlags% -o ../bin/%assembly%.exe %defines% %includeFlags% %linkerFlags%
