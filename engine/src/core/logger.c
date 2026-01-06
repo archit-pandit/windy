@@ -1,4 +1,5 @@
 #include "logger.h"
+#include "asserts.h"
 
 // TODO: remove (temp)
 #include <stdio.h>
@@ -33,4 +34,8 @@ void log_output(log_level lvl, const char* msg, ...) {
     char out_msg2[32000];
     sprintf(out_msg2, "%s%s\n", lvl_strs[lvl], out_msg);
     printf("%s", out_msg2);
+}
+
+void report_assert_failure(const char* exp, const char* msg, const char* file, i32 line) {
+    log_output(LOG_LEVEL_FATAL, "Assertion Failure: %s, message: '%s', in file: %s, line: %d\n", exp, msg, file, line);
 }
