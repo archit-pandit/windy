@@ -20,7 +20,7 @@
         if (exp) {                                                      \
         } else {                                                        \
             report_assert_failure(#exp, "", __FILE__, __LINE__);        \
-            debugBreak();                                              \
+            debugBreak();                                               \
         }                                                               \
     }
 
@@ -28,7 +28,7 @@
         if (exp) {                                                      \
         } else {                                                        \
             report_assert_failure(#exp, msg, __FILE__, __LINE__);       \
-            debugBreak();                                              \
+            debugBreak();                                               \
         }                                                               \
     }
 
@@ -37,7 +37,7 @@
             if (exp) {                                                  \
             } else {                                                    \
                 report_assert_failure(#exp, "", __FILE__, __LINE__);    \
-                debugBreak();                                          \
+                debugBreak();                                           \
             }                                                           \
         }
     #else

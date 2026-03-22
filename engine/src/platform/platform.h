@@ -6,7 +6,7 @@ typedef struct platform_state {
     void* internal_state;
 } platform_state;
 
-WAPI b8 platform_startup (
+b8 platform_startup (
     platform_state* p_state,
     const char* app_name,
     i32 x,
@@ -15,8 +15,8 @@ WAPI b8 platform_startup (
     i32 height
 );
 
-WAPI void platform_shutdown (platform_state* p_state);
-WAPI b8 platform_pump_msgs(platform_state* p_state); // needs to be continously run
+void platform_shutdown (platform_state* p_state);
+b8 platform_pump_msgs(platform_state* p_state); // needs to be continously run
 
 void* platform_allocate(u64 size, b8 aligned);
 void platform_free(void* block, b8 aligned);

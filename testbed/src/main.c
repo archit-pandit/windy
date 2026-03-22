@@ -1,25 +1,18 @@
 #include <core/logger.h>
 #include <core/asserts.h>
+#include <core/application.h>
 
-// TODO: temp, for testing
-#include <platform/platform.h>
+int main(void) {    
+    struct application_config config;
 
-int main(void) {
-    WFATAL("test: %i", 0);
-    WERROR("test: %i", 1);
-    WWARNING("test: %i", 2);
-    WINFO("test: %i", 3);
-    WDEBUG("test: %i", 4);
-    WTRACE("test: %i", 5);
+    config.start_pos_x = 100;
+    config.start_pos_y = 100;
+    config.start_width = 1280;
+    config.start_height = 720;
+    config.name = "Test";
 
-    platform_state state;
-    if (platform_startup(&state, "test", 300, 300, 1280, 720)) {
-        while (TRUE) {
-            platform_pump_msgs(&state);
-        }
-    }
-
-    platform_shutdown(&state);
+    application_create(&config);
+    application_run();
 
     return 0;
 }
