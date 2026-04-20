@@ -1,6 +1,7 @@
 #pragma once
 
 #include "defines.h"
+#include "game_struct.h"
 
 // Application Config
 typedef struct application_config {
@@ -16,5 +17,5 @@ typedef struct application_config {
     char* name;
 } application_config;
 
-WAPI b8 application_create(application_config* config);
-WAPI b8 application_run();
+WINDY_API b8 application_create(game* game_instance);
+WINDY_API b8 application_run();

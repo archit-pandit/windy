@@ -153,7 +153,7 @@
 
         if (handle == 0) {
             MessageBoxA(NULL, "Window creation failed", "Error", MB_ICONEXCLAMATION | MB_OK);
-            WFATAL("Window creation failed");
+            WINDY_FATAL("Window creation failed");
 
             return FALSE;
         } else {

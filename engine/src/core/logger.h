@@ -7,7 +7,7 @@
 #define LOG_TRACE_ENABLED 1
 
 // Disable debug and trace log for release
-#if WRELEASE == 1
+#if WINDY_RELEASE == 1
     #define LOG_DEBUG_ENABLED 0
     #define LOG_TRACE_ENABLED 0
 #endif
@@ -24,42 +24,42 @@ typedef enum log_level {
 b8 init_logging();
 void close_logging();
 
-WAPI void log_output(log_level lvl, const char* msg, ...);
+WINDY_API void log_output(log_level lvl, const char* msg, ...);
 
 // logs fatal message
-#ifndef WFATAL
-    #define WFATAL(msg, ...) log_output(LOG_LEVEL_FATAL, msg, ##__VA_ARGS__);
+#ifndef WINDY_FATAL
+    #define WINDY_FATAL(msg, ...) log_output(LOG_LEVEL_FATAL, msg, ##__VA_ARGS__);
 #endif
 
 // logs error message
-#ifndef WERROR
-    #define WERROR(msg, ...) log_output(LOG_LEVEL_ERROR, msg, ##__VA_ARGS__);
+#ifndef WINDY_ERROR
+    #define WINDY_ERROR(msg, ...) log_output(LOG_LEVEL_ERROR, msg, ##__VA_ARGS__);
 #endif
 
 // logs warning message if warning logs are enabled, otherwise does nothing
 #if LOG_WARNING_ENABLED == 1
-    #define WWARNING(msg, ...) log_output(LOG_LEVEL_WARNING, msg, ##__VA_ARGS__);
+    #define WINDY_WARNING(msg, ...) log_output(LOG_LEVEL_WARNING, msg, ##__VA_ARGS__);
 #else
-    #define WWARNING(msg, ...)
+    #define WINDY_WARNING(msg, ...)
 #endif
 
 // logs info message if info logs are enabled, otherwise does nothing
 #if LOG_INFO_ENABLED == 1
-    #define WINFO(msg, ...) log_output(LOG_LEVEL_INFO, msg, ##__VA_ARGS__);
+    #define WINDY_INFO(msg, ...) log_output(LOG_LEVEL_INFO, msg, ##__VA_ARGS__);
 #else
-    #define WINFO(msg, ...)
+    #define WINDY_INFO(msg, ...)
 #endif
 
 // logs debug message if debug logs are enabled, otherwise does nothing
 #if LOG_DEBUG_ENABLED == 1
-    #define WDEBUG(msg, ...) log_output(LOG_LEVEL_INFO, msg, ##__VA_ARGS__);
+    #define WINDY_DEBUG(msg, ...) log_output(LOG_LEVEL_INFO, msg, ##__VA_ARGS__);
 #else
-    #define WDEBUG(msg, ...)
+    #define WINDY_DEBUG(msg, ...)
 #endif
 
 // logs trace message if trace logs are enabled, otherwise does nothing
 #if LOG_TRACE_ENABLED == 1
-    #define WTRACE(msg, ...) log_output(LOG_LEVEL_TRACE, msg, ##__VA_ARGS__);
+    #define WINDY_TRACE(msg, ...) log_output(LOG_LEVEL_TRACE, msg, ##__VA_ARGS__);
 #else
-    #define WTRACE(msg, ...)
+    #define WINDY_TRACE(msg, ...)
 #endif

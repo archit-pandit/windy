@@ -3,9 +3,9 @@
 #include "defines.h"
 
 // disbaled assertions by commenting out this line
-#define WASSERTIONS_ENABLED
+#define WINDY_ASSERTIONS_ENABLED
 
-#ifdef WASSERTIONS_ENABLED
+#ifdef WINDY_ASSERTIONS_ENABLED
     #if _MSC_VER // if using visual studio compiler
         #include <intrin.h>
         #define debugBreak() __debugbreak()
@@ -13,10 +13,10 @@
         #define debugBreak() __builtin_trap()
     #endif
 
-    WAPI void report_assert_failure(const char* exp, const char* msg, const char* file, i32 line);
+    WINDY_API void report_assert_failure(const char* exp, const char* msg, const char* file, i32 line);
 
     // exp must eval to bool
-    #define WASSERT(exp) {                                              \
+    #define WINDY_ASSERT(exp) {                                              \
         if (exp) {                                                      \
         } else {                                                        \
             report_assert_failure(#exp, "", __FILE__, __LINE__);        \
@@ -24,7 +24,7 @@
         }                                                               \
     }
 
-    #define WASSERT_MSG(exp, msg) {                                     \
+    #define WINDY_ASSERT_MSG(exp, msg) {                                     \
         if (exp) {                                                      \
         } else {                                                        \
             report_assert_failure(#exp, msg, __FILE__, __LINE__);       \
@@ -33,7 +33,7 @@
     }
 
     #ifdef _DEBUG
-        #define WASSERT_DEBUG(exp) {                                    \
+        #define WINDY_ASSERT_DEBUG(exp) {                                    \
             if (exp) {                                                  \
             } else {                                                    \
                 report_assert_failure(#exp, "", __FILE__, __LINE__);    \
@@ -41,10 +41,10 @@
             }                                                           \
         }
     #else
-        #define WASSERT_DEBUG(exp)  // does nothing
+        #define WINDY_ASSERT_DEBUG(exp)  // does nothing
     #endif
 #else
-    #define WASSERT(exp);           // does nothing
-    #define WASSERT_MSG(exp, msg);  // does nothing
-    #define WASSERT_DEBUG(exp);     // does nothing
+    #define WINDY_ASSERT(exp);           // does nothing
+    #define WINDY_ASSERT_MSG(exp, msg);  // does nothing
+    #define WINDY_ASSERT_DEBUG(exp);     // does nothing
 #endif
